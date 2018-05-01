@@ -2,6 +2,7 @@ package model.hero;
 
 import lombok.Getter;
 import model.Unit;
+import model.hero.experience.ExperienceConst;
 
 @Getter
 public class HeroStat {
@@ -11,6 +12,8 @@ public class HeroStat {
     private int intellect;
     private int agility;
     private int concentration;
+    private int initiative;
+    private int avoidChance;
 
     HeroStat(Unit unit) {
         this.charisma = unit.getCharisma();
@@ -18,6 +21,16 @@ public class HeroStat {
         this.intellect = unit.getIntellect();
         this.agility = unit.getAgility();
         this.concentration = unit.getConcentration();
+        this.initiative = unit.getCharisma() / ExperienceConst.COEFFICIENT;
+        this.avoidChance = unit.getAgility() / ExperienceConst.COEFFICIENT;
+    }
+
+    public void setInitiative(HeroStat heroStat) {
+        this.initiative = heroStat.charisma / ExperienceConst.COEFFICIENT;
+    }
+
+    public void setAvoidChance(HeroStat heroStat) {
+        this.initiative = heroStat.agility / ExperienceConst.COEFFICIENT;
     }
 
     public Void setCharisma(int charisma) {

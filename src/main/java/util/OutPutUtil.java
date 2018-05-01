@@ -44,8 +44,9 @@ public class OutPutUtil {
                 team.getHeroes().get(i).getHeroRace() + ". Lvl - " +
                 team.getHeroes().get(i).getHeroExperience().getHeroLevel() +
                 ". Profession - " + team.getHeroes().get(i).getHeroProfession() + ".\nHealth - " +
-                team.getHeroes().get(i).getHealthPoint() + ". Mana - " + team.getHeroes().get(i).getManaPoint() +
-                ". Rage - " + team.getHeroes().get(i).getRagePoint() + ".\nStamina - " +
+                team.getHeroes().get(i).getConsumStat().getHealthPoint() + ". Mana - " +
+                team.getHeroes().get(i).getConsumStat().getManaPoint() + ". Rage - " +
+                team.getHeroes().get(i).getConsumStat().getRagePoint() + ".\nStamina - " +
                 team.getHeroes().get(i).getHeroStat().getStamina() + ". Agility - " +
                 team.getHeroes().get(i).getHeroStat().getAgility() + ". Charisma - " +
                 team.getHeroes().get(i).getHeroStat().getCharisma() + ". Intellect - " +
@@ -54,13 +55,12 @@ public class OutPutUtil {
     }
 
     public static void printHeroInfo(Hero hero) {
-        System.out.println("Info about hero " + hero.getHeroName() + ":\nRace - " +
-                hero.getHeroRace() + ". Lvl - " + hero.getHeroExperience().getHeroLevel() + ". Profession - " +
-                hero.getHeroProfession() + ".\nHealth - " + hero.getHealthPoint() + ". Mana - " + hero.getManaPoint() +
-                ". Rage - " + hero.getRagePoint() + ".\nStamina - " + hero.getHeroStat().getStamina() + ". Agility - " +
-                hero.getHeroStat().getAgility() + ". Charisma - " +
-                hero.getHeroStat().getCharisma() + ". Intellect - " +
-                hero.getHeroStat().getIntellect() + ". Concentration - " +
+        System.out.println("Info about hero " + hero.getHeroName() + ":\nRace - " + hero.getHeroRace() + ". Lvl - " +
+                hero.getHeroExperience().getHeroLevel() + ". Profession - " + hero.getHeroProfession() + ".\nHealth - "
+                + hero.getConsumStat().getHealthPoint() + ". Mana - " + hero.getConsumStat().getManaPoint() +
+                ". Rage - " + hero.getConsumStat().getRagePoint() + ".\nStamina - " + hero.getHeroStat().getStamina() +
+                ". Agility - " + hero.getHeroStat().getAgility() + ". Charisma - " + hero.getHeroStat().getCharisma() +
+                ". Intellect - " + hero.getHeroStat().getIntellect() + ". Concentration - " +
                 hero.getHeroStat().getConcentration() + ".");
     }
 }

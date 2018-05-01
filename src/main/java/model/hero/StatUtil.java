@@ -11,25 +11,22 @@ import java.util.Map;
 
 public final class StatUtil {
 
-    private static final double START_HEALTH_POINT = 100;
-    private static final double START_MANA_POINT = 100;
-    private static final double START_RAGE_POINT = 100;
     private static final int START_STAT_POINT = 10;
 
     private StatUtil() throws IllegalStateException {
         throw new IllegalStateException("Can't create instance of StatUtil");
     }
 
-    public static double calcMaxHealthPoint(HeroStat heroStat) {
-        return START_HEALTH_POINT + heroStat.getStamina() * 2;
-    }
-
-    public static double calcMaxManaPoint(HeroStat heroStat) {
-        return START_MANA_POINT + heroStat.getIntellect() * 2;
-    }
-
-    public static double calcMaxRagePoint(HeroStat heroStat) {
-        return START_RAGE_POINT + heroStat.getAgility() * 4;
+    private static void reCalcStat(Hero hero) {
+        hero.heroRegen.setHealthRegen(hero.heroStat.getStamina(), hero.heroStat.getConcentration());
+        hero.heroRegen.setManaRegen(hero.heroStat.getIntellect(), hero.heroStat.getConcentration());
+        hero.heroRegen.setRageRegen(hero.heroStat.getConcentration());
+        hero.consumStat.calcMaxHealthPoint(hero.heroStat);
+        hero.consumStat.calcMaxManaPoint(hero.heroStat);
+        hero.consumStat.calcMaxRagePoint(hero.heroStat);
+        hero.heroExperience.setOverXpGive(hero.heroStat);
+        hero.heroStat.setInitiative(hero.heroStat);
+        hero.heroStat.setAvoidChance(hero.heroStat);
     }
 
     public static void addHeroStat(Hero hero) {
@@ -44,6 +41,7 @@ public final class StatUtil {
                 System.out.println("You have " + statPoint + " characteristics that can be distributed");
             }
         }
+        reCalcStat(hero);
     }
 
     private static Map<String, Void> statMap(Hero hero, int point) {

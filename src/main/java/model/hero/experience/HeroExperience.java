@@ -1,17 +1,24 @@
-package model.hero;
+package model.hero.experience;
 
 import lombok.Getter;
+import model.hero.HeroStat;
 
 @Getter
 public class HeroExperience implements ExperienceConst {
     private int heroLevel;
     private double heroXp;
     private double needXpToNextLvl;
+    private int overXpGive;
 
-    HeroExperience() {
-        heroLevel = START_LVL;
-        heroXp = START_XP;
-        needXpToNextLvl = CONST_NEED_XP;
+    public HeroExperience(HeroStat heroStat) {
+        this.heroLevel = START_LVL;
+        this.heroXp = START_XP;
+        this.needXpToNextLvl = CONST_NEED_XP;
+        this.overXpGive = heroStat.getCharisma() / COEFFICIENT;
+    }
+
+    public void setOverXpGive(HeroStat heroStat) {
+        this.overXpGive = heroStat.getCharisma() / COEFFICIENT;
     }
 
     public void setNeedXpToNextLvl(int sumHeroLvl) {

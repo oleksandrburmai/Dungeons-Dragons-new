@@ -2,9 +2,9 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
-import model.hero.ExperienceConst;
 import model.hero.Hero;
 import model.hero.StatUtil;
+import model.hero.experience.ExperienceConst;
 import model.race.RaceMap;
 import util.InPutUtil;
 import util.OutPutUtil;
@@ -51,10 +51,12 @@ public class Team {
     public void distrybXp(double xp) {
         for (Hero hero : heroes) {
             if (hero.isLeader()) {
-                hero.getHeroExperience().setHeroXp(xp*0.4);
+                hero.getHeroExperience().setHeroXp(xp * ExperienceConst.LEADER_XP_COEF +
+                        (xp * ExperienceConst.LEADER_XP_COEF * hero.getHeroExperience().getOverXpGive()));
                 heroLvlUp(hero);
             } else {
-                hero.getHeroExperience().setHeroXp(xp*0.3);
+                hero.getHeroExperience().setHeroXp(xp * ExperienceConst.COMRADE_XP_COEF +
+                        (xp * ExperienceConst.COMRADE_XP_COEF * hero.getHeroExperience().getOverXpGive()));
                 heroLvlUp(hero);
             }
         }
@@ -63,7 +65,7 @@ public class Team {
     private void heroLvlUp(Hero hero) {
         if (hero.getHeroExperience().getHeroXp() >= hero.getHeroExperience().getNeedXpToNextLvl() &&
                 hero.getHeroExperience().getHeroLevel() <= ExperienceConst.MAX_LVL) {
-            System.out.println("\nCongratulation  " + hero.getHeroName()+" is lvl up:\n");
+            System.out.println("\nCongratulation  " + hero.getHeroName() + " is lvl up:\n");
             int sumHeroLvl = 0;
             for (int i = 0; i < TEAM_MEMBERS; i++) {
                 sumHeroLvl = heroes.get(i).getHeroExperience().getHeroLevel();

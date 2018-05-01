@@ -23,6 +23,7 @@ public class Hero {
         this.heroRace = unit.getRaceName();
         this.heroProfession = unit.getProfessionName();
         this.heroStat = new HeroStat(unit);
+        this.heroExperience = new HeroExperience();
         this.isLeader = isLeader;
         this.healthPoint = StatUtil.calcMaxHealthPoint(this.heroStat);
         this.manaPoint = StatUtil.calcMaxManaPoint(this.heroStat);

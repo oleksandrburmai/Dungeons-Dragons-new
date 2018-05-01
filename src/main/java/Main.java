@@ -1,11 +1,9 @@
-import util.AppMenu;
-import util.OutPutUtil;
-import util.ScannerUtil;
+import util.Game;
 
 public class Main {
 
     public static void main(String[] args) {
-        new AppMenu().startGame();
+        new Game().startGame();
     }
 }
 

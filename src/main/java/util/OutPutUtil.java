@@ -1,5 +1,8 @@
 package util;
 
+import model.Team;
+import model.hero.Hero;
+
 public class OutPutUtil {
 
     public static void printWelcomeMessage() {
@@ -34,5 +37,30 @@ public class OutPutUtil {
         System.out.println("You have " + statPoint + " characteristics that can be distributed\n" +
                 "You can distribute this point to:\n1 - Stamina, 2 - Agility, 3 - Charisma, " +
                 "4 - Intellect, 5 - Concentration. 6 - Stat info.");
+    }
+
+    public static void printTeamInfo(Team team, int i) {
+        System.out.println("Info about hero " + team.getHeroes().get(i).getHeroName() + ":\nRace - " +
+                team.getHeroes().get(i).getHeroRace() + ". Lvl - " +
+                team.getHeroes().get(i).getHeroExperience().getHeroLevel() +
+                ". Profession - " + team.getHeroes().get(i).getHeroProfession() + ".\nHealth - " +
+                team.getHeroes().get(i).getHealthPoint() + ". Mana - " + team.getHeroes().get(i).getManaPoint() +
+                ". Rage - " + team.getHeroes().get(i).getRagePoint() + ".\nStamina - " +
+                team.getHeroes().get(i).getHeroStat().getStamina() + ". Agility - " +
+                team.getHeroes().get(i).getHeroStat().getAgility() + ". Charisma - " +
+                team.getHeroes().get(i).getHeroStat().getCharisma() + ". Intellect - " +
+                team.getHeroes().get(i).getHeroStat().getIntellect() + ". Concentration - " +
+                team.getHeroes().get(i).getHeroStat().getConcentration() + ".");
+    }
+
+    public static void printHeroInfo(Hero hero) {
+        System.out.println("Info about hero " + hero.getHeroName() + ":\nRace - " +
+                hero.getHeroRace() + ". Lvl - " + hero.getHeroExperience().getHeroLevel() + ". Profession - " +
+                hero.getHeroProfession() + ".\nHealth - " + hero.getHealthPoint() + ". Mana - " + hero.getManaPoint() +
+                ". Rage - " + hero.getRagePoint() + ".\nStamina - " + hero.getHeroStat().getStamina() + ". Agility - " +
+                hero.getHeroStat().getAgility() + ". Charisma - " +
+                hero.getHeroStat().getCharisma() + ". Intellect - " +
+                hero.getHeroStat().getIntellect() + ". Concentration - " +
+                hero.getHeroStat().getConcentration() + ".");
     }
 }
